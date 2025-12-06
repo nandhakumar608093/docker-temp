@@ -1,0 +1,22 @@
+{
+  "name": "Docker with Docker Compose Dev Environment",
+  "dockerFile": "Dockerfile", 
+  "workspaceFolder": "/workspace", 
+  "extensions": [
+    "ms-azuretools.vscode-docker", 
+    "dbaeumer.vscode-eslint", 
+    "ms-vscode-remote.remote-containers"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y docker-compose",
+  "runArgs": [
+    "--privileged"
+  ],
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "forwardPorts": [8080, 3000],
+  "remoteUser": "vscode"
+}
